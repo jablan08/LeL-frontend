@@ -58,6 +58,20 @@ class App extends Component {
       console.log(error)
     }
   }
+  // getTeams = async () => {
+  //   try {
+  //     const teams = await fetch(`/api/teams`)
+      
+  //       const tournamentsJson = await tournaments.json()
+        
+  //       if(tournamentsJson.success){
+  //         return tournamentsJson
+  //       }
+      
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   
   
   render() { 
