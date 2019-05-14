@@ -3,34 +3,72 @@ import { Switch, Route } from "react-router-dom"
 import NavBar from "./component/NavBar/NavBar"
 import Login from "./component/Login/Login"
 import ShowUser from "./component/ShowUser/ShowUser"
+import Tournaments from "./component/TourneyContainer/Tournaments"
 
 import * as routes from "./constants/routes"
 
 import './App.css';
 
+
+require("dotenv").config();
+
 class App extends Component {
   state = { 
-    currentUser: null
+    currentUser: null,
+    tournaments: [],
+    matches: [],
+    teams: [],
+    
    }
 
   setCurrentUser = (user) => {
     this.setState({
       currentUser: user
+      
     })
   }
+
   
-
+  
+  
   componentDidMount() {
-
+    this.getTournaments().then(data =>
+     { 
+      console.log(data)
+      this.setState({
+        tournaments: data
+      })
+    }
+    )
+    
+    
   }
+  
+  getTournaments = async () => {
+    try {
+      const tournaments = await fetch(`/api/tournaments`)
+      
+        const tournamentsJson = await tournaments.json()
+        
+        if(tournamentsJson.success){
+          return tournamentsJson
+        }
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  
   render() { 
-    const { currentUser } = this.state
+    const { currentUser, tournaments } = this.state
+    console.log(tournaments,"FULLL ARRAY")
     return ( 
       <div >
       <NavBar currentUser={currentUser}/> 
       <Switch>
         <Route exact path={routes.ROOT} render={()=><div>ROOT</div>}/>
-        <Route exact path={routes.HOME} render={()=><div>HOME</div>}/>
+        <Route exact path={routes.HOME} render={()=> <Tournaments tournaments={tournaments}/>}/>
         <Route exact path={routes.USERS} render={() => <div>USER</div>} />
         <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
         <Route exact path={routes.POST} render={()=><div>DIE KARP DIE</div>}/>
