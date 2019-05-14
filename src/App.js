@@ -10,14 +10,13 @@ import * as routes from "./constants/routes"
 import './App.css';
 
 
+
 require("dotenv").config();
 
 class App extends Component {
   state = { 
     currentUser: null,
-    tournaments: [],
-    matches: [],
-    teams: [],
+    data: []
     
    }
 
@@ -27,21 +26,16 @@ class App extends Component {
       
     })
   }
-
-  
-  
   
   componentDidMount() {
-    this.getTournaments().then(data =>
-     { 
-      console.log(data)
-      this.setState({
-        tournaments: data
-      })
-    }
-    )
-    
-    
+    this.getTournaments().then(allData =>
+      {
+        console.log(allData) 
+        this.setState({
+          data: allData.data
+        })
+      }
+    )  
   }
   
   getTournaments = async () => {
@@ -75,17 +69,18 @@ class App extends Component {
   
   
   render() { 
-    const { currentUser, tournaments } = this.state
-    console.log(tournaments,"FULLL ARRAY")
+    const { currentUser, data } = this.state
+    console.log(data,"FULLL ARRAY")
     return ( 
       <div >
       <NavBar currentUser={currentUser}/> 
       <Switch>
-        <Route exact path={routes.ROOT} render={()=><div>ROOT</div>}/>
-        <Route exact path={routes.HOME} render={()=> <Tournaments tournaments={tournaments}/>}/>
-        <Route exact path={routes.USERS} render={() => <div>USER</div>} />
+        <Route exact path={routes.ROOT} render={()=><Tournaments data={data}/>}/>
+        <Route exact path={routes.TEAMS} render={()=> <div> TEAMS </div>}/>
+        <Route exact path={routes.STANDINGS} render={() => <div>STANDINGS</div>} />
+        <Route exact path={routes.SCHEDULE} render={() => <div>SCHEDULE</div>} />
         <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
-        <Route exact path={routes.POST} render={()=><div>DIE KARP DIE</div>}/>
+        <Route exact path={routes.ALLMATCHES} render={()=><div>ALL MATCHES</div>}/>
         <Route exact path={routes.LOGIN} render={()=> <Login currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />
         <Route render={()=> <div>You're LOST</div>}/>
       </Switch>

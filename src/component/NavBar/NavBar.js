@@ -8,10 +8,12 @@ const NavBar = ({currentUser}) =>
     
     <div>
         <h5>League of eSports Legends</h5>
-        <NavLink to={routes.HOME} activeClassName="active">HOME</NavLink> 
-        <NavLink to={routes.USERS} activeClassName="active">USERS</NavLink> 
-        <NavLink to={routes.POST} activeClassName="active">POST</NavLink> 
-        <NavLink exact to={routes.ROOT} activeClassName="active">ROOT</NavLink>
+        <NavLink exact to={routes.ROOT} activeClassName="active">HOME</NavLink>
+        <NavLink to={routes.TEAMS} activeClassName="active">TEAMS</NavLink> 
+        {/* <NavLink to={routes.USERS} activeClassName="active">USERS</NavLink>  */}
+        <NavLink to={routes.STANDINGS} activeClassName="active">STANDINGS</NavLink> 
+        <NavLink to={routes.SCHEDULE} activeClassName="active">SCHEDULE</NavLink> 
+        <NavLink to={routes.ALLMATCHES} activeClassName="active">ALL MATCHES</NavLink> 
         {
             currentUser
             ? <span>hello {currentUser.username}</span>

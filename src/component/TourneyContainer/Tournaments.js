@@ -1,40 +1,63 @@
 import React from 'react';
 
+const boxDiv = {
+    
+}
+
+const ListTournaments = (props) => 
+    <li>
+        {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
+        <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
+    </li>
+    
+
 const Tournaments = (props) => {
-    console.log(props.tournaments.dataRunning, "DATARUNNING")
-    const {dataRunning, dataPast, dataUpcoming} = props.tournaments
+    // console.log(props.tournaments.dataRunning, "DATARUNNING")
+    const {dataRunning, dataPast, dataUpcoming, dataPastMatches} = props.data
     let runningList;
     let upcomingList;
     let pastList;
-    let teamsList
-    if(props.tournaments.dataRunning){
-        console.log(props.tournaments.dataRunning[0].teams, "TEAMSRUNNING")
+    let teamsList;
+    let pastMatchesList;
+    if(props.data.dataRunning){
+        console.log(props.data.dataRunning[0].teams, "TEAMSRUNNING")
         runningList = dataRunning.map((tourney, i) => 
-            <li key={i}>
-                {tourney.league.name} - {tourney.name.toUpperCase()}  <br/>
-                <img src={tourney.league.image_url} width="150" height="150"alt=""/>
-            </li>
+            <ListTournaments tourney={tourney} key={i} />
         )
         upcomingList = dataUpcoming.map((tourney, i) => 
-            <li key={i}>
-                {tourney.league.name} - {tourney.name.toUpperCase()}  <br/>
-                <img src={tourney.league.image_url} width="150" height="150"alt=""/>
-            </li>
+            <ListTournaments tourney={tourney} key={i} />
         )
         pastList = dataPast.map((tourney, i) => 
-            <li key={i}>
-                {tourney.league.name} - {tourney.name.toUpperCase()} <br/>
-                <img src={tourney.league.image_url} width="150" height="150"alt=""/>
-            </li>
+            <ListTournaments tourney={tourney} key={i} />
         )
-        for(let i =0; i < dataRunning.length; i++) {
-            teamsList = dataRunning[i].teams.map((team,i)=>
-                <li key={i}>
-                    {team.name} <br/>
-                    <img src={team.image_url} width="150" height="150"alt=""/>
-                </li>
+        teamsList = dataRunning.map((tourney,i)=> 
+            tourney.teams.map((team, i)=>
+            <li key={i}>
+                {team.name} <br/>
+                <img src={team.image_url} width="150" height="150"alt=""/>
+            </li>
             )
+        )
+        pastMatchesList = dataPastMatches.map((match,i)=>{
+            return(
+                <div key={i}>
+                    <h4>{match.name}</h4>
+                    {
+                        match.opponents.map((opponent, i)=>
+                        <li key={i}>
+                            {opponent.opponent.name} <br/>
+                            <img src={opponent.opponent.image_url} width="150" height="150"alt=""/>
+                        </li>
+                        )
+                    }
+                </div>
+                
+
+            )
+
         }
+        )
+
     }
     return (
         <div>
@@ -63,6 +86,12 @@ const Tournaments = (props) => {
                             {teamsList}
                         </ul>
                     </div>
+                    <div>
+                        <h3>Past Matches</h3>
+                        <ul>
+                            {pastMatchesList}
+                        </ul>
+                    </div>
                 </div>
             )
             : <h1>Loading...</h1>
@@ -72,5 +101,7 @@ const Tournaments = (props) => {
     )
    
 }
+
+
 
 export default Tournaments
