@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import * as routes from "../../constants/routes"
 import "./NavBar.css"
 
-const NavBar = ({currentUser}) =>
+const NavBar = ({currentUser, doLogout}) =>
     
     <div>
         <h5>League of eSports Legends</h5>
@@ -16,7 +16,7 @@ const NavBar = ({currentUser}) =>
         <NavLink to={routes.ALLMATCHES} activeClassName="active">ALL MATCHES</NavLink> 
         {
             currentUser
-            ? <span>hello {currentUser.username}</span>
+            ? <span>hello {currentUser.username} <button onClick={doLogout}>LOGOUT</button></span>
             : [<NavLink key={1} to={'/login'} activeClassName="selected">LOGIN </NavLink>,
             <NavLink key={2} to={routes.CREATEUSER} activeClassName="selected">REGISTER </NavLink> ]
             
