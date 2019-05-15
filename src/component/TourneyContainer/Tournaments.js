@@ -9,6 +9,11 @@ const ListTournaments = (props) =>
         <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
     </li>
 
+const ListNames = (props) => 
+    <li>
+        {props.match.league.name} - {props.match.name.toUpperCase()}  <br/>
+    </li>
+
 const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
@@ -16,13 +21,38 @@ const ListTeams = (props) =>
                 <img src={team.image_url} width="150" height="150"alt=""/>
             </li>
         )
+
+const ListOpponents = (props) => 
+    <div>
+        <div>
+            <h4>{props.match.name}</h4>
+            <h6>{dateBegin(props.match.begin_at)}</h6>
+            <h6>{timeBegin(props.match.begin_at)}</h6>
+        </div>
+
+        {
+            props.match.opponents.map((opponent, i)=>
+            <li key={i}>
+                {opponent.opponent.name} <br/>
+                <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
+                <h6>WINS:{props.match.results[i].score}</h6>
+            </li>
+            )
+        }
+    </div>
+
+const dateBegin = str =>
+    new Date(str).toDateString();
+
+const timeBegin = str => 
+    moment(new Date(str).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A");
     
 
 const Tournaments = (props) => {
-    // console.log(props.tournaments.dataRunning, "DATARUNNING")
     const {dataRunning, dataPast, dataUpcoming, dataPastMatches} = props.data
     let runningList;
-    let upcomingList;
+    // let upcomingList;
+    let upcomingTeamsList;
     let pastList;
     let teamsList;
     let pastMatchesList;
@@ -31,39 +61,26 @@ const Tournaments = (props) => {
         runningList = dataRunning.map((tourney, i) => 
             <ListTournaments tourney={tourney} key={i} />
         )
-        upcomingList = dataUpcoming.map((tourney, i) => 
-            <ListTournaments tourney={tourney} key={i} />
-        )
-        // upcomingTeamsList = dataUpcoming.map((tourney, i) => 
-        //     <ListTournaments tourney={tourney} key={i} />
+
+        // upcomingList = dataUpcoming.map((match, i) => 
+        //     <ListNames match={match} key={i} />
         // )
+
+        upcomingTeamsList = dataUpcoming.map((match, i) => 
+            <ListOpponents match={match} key={i}/>
+        )
 
         pastList = dataPast.map((tourney, i) => 
             <ListTournaments tourney={tourney} key={i} />
         )
+
         teamsList = dataRunning.map((tourney, i)=>
-            <ListTeams tourney={tourney} key={i}/>
+            <ListTeams tourney={tourney} key={i} />
         )
-        pastMatchesList = dataPastMatches.map((match,i)=>{
-            let dateBegin = new Date(match.begin_at).toDateString()
-            let timeBegin = moment(new Date(match.begin_at).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A")
+
+        pastMatchesList = dataPastMatches.map((match,i)=>{ 
             return(
-                    <div key={i}>
-                        <div>
-                            <h4>{match.name}</h4>
-                            <h6>{dateBegin}</h6>
-                            <h6>{timeBegin}</h6>
-                        </div>
-                        {
-                            match.opponents.map((opponent, i)=>
-                            <li key={i}>
-                                {opponent.opponent.name} <br/>
-                                <h6>WINS:{match.results[i].score}</h6>
-                                <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
-                            </li>
-                            )
-                        }
-                    </div>
+                <ListOpponents match={match} key={i}/>
                 )
             }
         )
@@ -76,14 +93,25 @@ const Tournaments = (props) => {
             (
                 <div>
                     <div>
-                        <h3>Current tournaments</h3>
-                        <ul>
-                            {runningList}
-                        </ul>
-                        <h3>Upcoming Matches</h3>
-                        <ul>
-                            {upcomingList}
-                        </ul>
+                        <div>
+                            <h3>Current tournaments</h3>
+                            <ul>
+                                {runningList}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3>Upcoming Matches</h3>
+                            {/* <div>
+                                <ul>
+                                    {upcomingList}
+                                </ul>
+                            </div> */}
+                            <div>
+                                {upcomingTeamsList}
+                            </div>
+                        </div>
+
                         <h3>Past tournaments</h3>
                         <ul>
                             {pastList}
