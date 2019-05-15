@@ -34,11 +34,13 @@ const ListOpponents = (props) =>
 
         {
             props.match.opponents.map((opponent, i)=>
-            <li key={i}>
-                {opponent.opponent.name} <br/>
-                <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
-                <h6>WINS:{props.match.results[i].score}</h6>
-            </li>
+                <li key={i}>
+            <Link to={`/teams/${opponent.opponent.id}`}>
+                    {opponent.opponent.name} <br/>
+                    <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
+            </Link>
+                    <h6>WINS:{props.match.results[i].score}</h6>
+                </li>
             )
         }
     </div>
