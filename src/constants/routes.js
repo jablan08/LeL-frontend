@@ -7,5 +7,5 @@ export const USERS = "/users"
 export const ALLMATCHES = "/all-matches"
 export const MATCH = "/match"
 export const LOGIN = "/login"
-export const TOURNAMENTS = "/tournament"
+export const TOURNAMENTS = "/tournaments"
 

@@ -1,13 +1,15 @@
 import React from 'react';
 import moment from "moment";
-
+import { Link }from "react-router-dom"
 
 
 const ListTournaments = (props) => 
-    <li>
-        {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
-        <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
-    </li>
+    <Link to={`/tournaments/${props.tourney.id}`}>
+        <li>
+            {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
+            <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
+        </li>
+    </Link>
 
 const ListNames = (props) => 
     <li>
@@ -59,6 +61,7 @@ const Tournaments = (props) => {
     if(props.data.dataRunning){
         console.log(props.data.dataRunning[0].teams, "TEAMSRUNNING")
         runningList = dataRunning.map((tourney, i) => 
+            
             <ListTournaments tourney={tourney} key={i} />
         )
 
