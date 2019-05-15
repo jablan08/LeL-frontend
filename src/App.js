@@ -76,11 +76,23 @@ class App extends Component {
       <NavBar currentUser={currentUser}/> 
       <Switch>
         <Route exact path={routes.ROOT} render={()=><Tournaments data={data}/>}/>
+
         <Route exact path={routes.TEAMS} render={()=> <div> TEAMS </div>}/>
+        <Route exact path={`${routes.TEAMS}/:id`} render={()=> <div> TEAMS SHOW </div>}/> 
+
+        <Route exact path={`${routes.PLAYER}/:id`} render={()=> <div> PLAYER SHOW </div>}/>
+
+        <Route exact path={routes.TOURNAMENTS} render={() => <div>TOURNAMENTS</div>} />
+        <Route exact path={`${routes.TOURNAMENTS}/:id`} render={() => <div>TOURNAMENTS</div>} />
+
+        <Route exact path={routes.ALLMATCHES} render={()=><div>ALL MATCHES</div>}/>
+        <Route exact path={routes.MATCH} render={()=><div>MATCH</div>}/>
+
         <Route exact path={routes.STANDINGS} render={() => <div>STANDINGS</div>} />
+
         <Route exact path={routes.SCHEDULE} render={() => <div>SCHEDULE</div>} />
         <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
-        <Route exact path={routes.ALLMATCHES} render={()=><div>ALL MATCHES</div>}/>
+        
         <Route exact path={routes.LOGIN} render={()=> <Login currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />
         <Route render={()=> <div>You're LOST</div>}/>
       </Switch>
