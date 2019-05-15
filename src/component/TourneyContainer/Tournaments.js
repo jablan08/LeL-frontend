@@ -4,12 +4,12 @@ import { Link }from "react-router-dom"
 
 
 const ListTournaments = (props) => 
-    <Link to={`/tournaments/${props.tourney.id}`}>
         <li>
-            {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
-            <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
+            <Link to={`/tournaments/${props.tourney.id}`}>
+                {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
+                <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
+            </Link>
         </li>
-    </Link>
 
 const ListNames = (props) => 
     <li>
@@ -19,15 +19,19 @@ const ListNames = (props) =>
 const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
-                {team.name} <br/>
-                <img src={team.image_url} width="150" height="150"alt=""/>
+                <Link to={`/teams/${team.id}`}>
+                    {team.name} <br/>
+                    <img src={team.image_url} width="150" height="150"alt=""/>
+                </Link>
             </li>
         )
 
 const ListOpponents = (props) => 
     <div>
         <div>
-            <h4>{props.match.name}</h4>
+            <Link to={`/match/${props.match.id}`}>
+                <h4>{props.match.name}</h4>
+            </Link>
             <h6>{dateBegin(props.match.begin_at)}</h6>
             <h6>{timeBegin(props.match.begin_at)}</h6>
         </div>
@@ -35,10 +39,10 @@ const ListOpponents = (props) =>
         {
             props.match.opponents.map((opponent, i)=>
                 <li key={i}>
-            <Link to={`/teams/${opponent.opponent.id}`}>
-                    {opponent.opponent.name} <br/>
-                    <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
-            </Link>
+                    <Link to={`/teams/${opponent.opponent.id}`}>
+                        {opponent.opponent.name} <br/>
+                        <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
+                    </Link>
                     <h6>WINS:{props.match.results[i].score}</h6>
                 </li>
             )
