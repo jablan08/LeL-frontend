@@ -35,7 +35,6 @@ const ListOpponents = (props) =>
             <h6>{dateBegin(props.match.begin_at)}</h6>
             <h6>{timeBegin(props.match.begin_at)}</h6>
         </div>
-
         {
             props.match.opponents.map((opponent, i)=>
                 <li key={i}>

@@ -6,7 +6,8 @@ class Login extends Component {
     state = { 
         username: "",
         password: "",
-        logged: false
+        logged: false,
+        message: ""
 
     }
     handleChange = (e) =>
@@ -27,11 +28,16 @@ class Login extends Component {
             })
             console.log("HIT")
             const parsedResponse = await login.json();
+            console.log(parsedResponse)
             if (parsedResponse.success) {
                 console.log(parsedResponse)
                 this.props.setCurrentUser(parsedResponse.user)
                 this.setState({
-                    logged: true
+                    logged: true,
+                })
+            } else {
+                this.setState({
+                    message: parsedResponse.message
                 })
             }
         } catch (error) {
@@ -40,17 +46,19 @@ class Login extends Component {
       
     }
     render() { 
-        const { username, password, logged } = this.state
+        const { username, password, logged, message } = this.state
         return ( 
             logged 
             ? <Redirect to={`/users/${this.props.currentUser._id}`}/>
-            : <form onSubmit={this.handleSubmit}>
+            : <form onSubmit={e => this.handleSubmit(e)}>
                 <input text="text" name="username" onChange={this.handleChange} value={username}/>
                 <input text="password" name="password" onChange={this.handleChange} value={password}/>
                 <button type="submit"> Submit</button>
+                {message}
             </form>
          );
     }
 }
  
 export default Login;
+
