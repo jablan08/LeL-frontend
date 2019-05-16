@@ -4,7 +4,8 @@ import TeamList from "../TeamList/TeamList"
 class TeamShow extends Component {
     state = { 
         data: [],
-        teamId: window.location.pathname.split("/")[2]
+        teamId: window.location.pathname.split("/")[2],
+        message: ""
 
     }
     componentDidMount() {
@@ -24,7 +25,6 @@ class TeamShow extends Component {
             })
             const teamShowJson = await teamShow.json()
             if(teamShowJson.success){
-                console.log(teamShowJson)
                 return teamShowJson
               }
         } catch (error) {
@@ -32,16 +32,47 @@ class TeamShow extends Component {
         }
     }
 
+    addTeamToWatch = async (team) => {
+        console.log(team)
+        try {
+            // if (this.props.currentUser){
+                const addTeam = await fetch("/users/add", {
+                    method: "POST",
+                    body: JSON.stringify(team),
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                const parsedResponse = await addTeam.json();
+                console.log(parsedResponse)
+                if (parsedResponse.success) {
+                    console.log(parsedResponse, "=======++++")
+                    this.props.setCurrentUser(parsedResponse.updatedUser)
+                }
+             
+            // else {
+            //     this.setState({
+            //         message: "Please log in or register to add to watch list."
+            //     })
 
+            // }
+            
+        } catch(err) {
+            console.log(err)
+        }
+
+    }
     render() { 
-       const {data} = this.state
+       const {data, message} = this.state
        console.log(data)
         return ( 
             <div>
                 {
                     data.length === 0
                     ? <h1>Loading...</h1>
-                    : <TeamList data={data}/>
+                    
+                    : [<h3 key={1}>{message}</h3>, <TeamList key={2} addTeamToWatch={this.addTeamToWatch} data={data}/>]
 
                 }
             </div>

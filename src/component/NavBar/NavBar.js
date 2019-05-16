@@ -7,7 +7,7 @@ import "./NavBar.css"
 const NavBar = ({currentUser, doLogout}) =>
     
     <div>
-        <h5>League of eSports Legends</h5>
+        <h2>League of eSports Legends</h2>
         <NavLink exact to={routes.ROOT} activeClassName="active">HOME</NavLink>
         <NavLink to={routes.TEAMS} activeClassName="active">TEAMS</NavLink> 
         {/* <NavLink to={routes.USERS} activeClassName="active">USERS</NavLink>  */}

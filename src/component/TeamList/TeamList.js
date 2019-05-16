@@ -1,7 +1,9 @@
 import React from 'react';
 
 const TeamList = (props) =>{
+    console.log(props.data.fullTeam)
     const {name,players,image_url} = props.data.fullTeam
+    
     const teamList = players.map((player,i)=>
         <li key={i}>
             {player.name} 
@@ -14,6 +16,7 @@ const TeamList = (props) =>{
         <div>
             {name}
             <img src={image_url} width="300" height="300" alt=""/>
+            <button type="submit" onClick={()=> props.addTeamToWatch(props.data.fullTeam)}>Add to WatchList</button>
             <ul>
                 {teamList}
             </ul>

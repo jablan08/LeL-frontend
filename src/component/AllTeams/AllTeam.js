@@ -2,7 +2,9 @@ import React from 'react';
 import { Link }from "react-router-dom"
 const AllTeam = (props) => { 
     console.log(props.data.dataUpcomingTourney)
-    const teamList = props.data.dataUpcomingTourney.map((tourney, i)=>
+    let teamList;
+    if (props.data) {  
+        teamList = props.data.dataUpcomingTourney.map((tourney, i)=>
         tourney.teams.map((team,i)=>
             <li key={i}>
                 <Link to={`/teams/${team.id}`}>
@@ -12,13 +14,12 @@ const AllTeam = (props) => {
             </li>
         )
     )
+}
     return (
         <div>
             {teamList}
         </div>
     )
-
-
 
 }
 export default AllTeam;
