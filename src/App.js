@@ -50,10 +50,7 @@ class App extends Component {
   getTournaments = async () => {
     try {
       const tournaments = await fetch(`https://leagueofesportslegends.herokuapp.com/api/tournaments`, {
-        credentials: "include",
-        headers:{
-          'Access-Control-Allow-Origin':"https://leagueofesportlegends.herokuapp.com"
-        }
+        credentials: "include"
       })
       
         const tournamentsJson = await tournaments.json()
