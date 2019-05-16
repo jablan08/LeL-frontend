@@ -29,7 +29,6 @@ class ShowUser extends Component {
     }
     deleteToWatchList = async (id, e) => {
         console.log(id, ' this is id')
-        e.preventDefault();
         try {
             const deleteWatchList = await fetch(`/users/watchlist/${id}`, {
                 credentials: "include",

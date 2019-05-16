@@ -10,7 +10,7 @@ const WatchList = (props)=> {
                 <span>{team.title}</span><br/>
                 <img src={team.image} width="150" height="150" alt=""/><br/>
             </Link>
-            <button onClick={(e)=>props.deleteToWatchList(i,e)}>Delete</button>
+            <button onClick={()=>props.deleteToWatchList(i)}>Delete</button>
             </li>
         )
     })
