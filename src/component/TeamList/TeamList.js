@@ -8,7 +8,7 @@ const TeamList = (props) =>{
     const teamList = players.map((player,i)=>
         <li key={i}>
             {player.name} 
-            <img src={player.image_url} width="125" height="100"/>
+            <img src={player.image_url} width="125" height="100" alt=""/>
             ROLE: {player.role.toUpperCase()}
         </li>
     )
@@ -16,7 +16,7 @@ const TeamList = (props) =>{
     return (
         <div>
             {name}
-            <img src={image_url} width="300" height="300"/>
+            <img src={image_url} width="300" height="300" alt=""/>
             <ul>
                 {teamList}
             </ul>
