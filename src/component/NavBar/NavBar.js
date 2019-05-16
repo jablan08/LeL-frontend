@@ -16,7 +16,7 @@ const NavBar = ({currentUser, doLogout}) =>
         <NavLink to={routes.ALLMATCHES} activeClassName="active">ALL MATCHES</NavLink> 
         {
             currentUser
-            ? <span>hello {currentUser.username} <button onClick={doLogout}>LOGOUT</button></span>
+            ? <span>hello {currentUser.username} <NavLink to={`${routes.USERS}/${currentUser._id}`}> ACCOUNT </NavLink> <button onClick={doLogout}>LOGOUT</button></span>
             : [<NavLink key={1} to={'/login'} activeClassName="selected">LOGIN </NavLink>,
             <NavLink key={2} to={routes.CREATEUSER} activeClassName="selected">REGISTER </NavLink> ]
             

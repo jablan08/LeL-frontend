@@ -2,9 +2,6 @@ import React from 'react';
 
 const TeamList = (props) =>{
     const {name,players,image_url} = props.data.fullTeam
-    console.log(props)
-    console.log(props.data)
-    console.log(props.data.fullTeam)
     const teamList = players.map((player,i)=>
         <li key={i}>
             {player.name} 
