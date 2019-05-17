@@ -5,7 +5,7 @@ import { Link }from "react-router-dom"
 
 const ListTournaments = (props) => 
         <li>
-            <Link to={`/tournaments/${props.tourney.id}`}>
+            <Link to={`/tournaments/${props.tourney.id}`} className="links">
                 {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
                 <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
             </Link>
@@ -14,7 +14,7 @@ const ListTournaments = (props) =>
 const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
-                <Link to={`/teams/${team.id}`}>
+                <Link to={`/teams/${team.id}`} className="links">
                     {team.name} <br/>
                     <img src={team.image_url} width="150" height="150"alt=""/>
                 </Link>
@@ -22,9 +22,9 @@ const ListTeams = (props) =>
         )
 
 const ListOpponents = (props) => 
-    <div>
+    <div >
         <div>
-            <Link to={`/match/${props.match.id}`}>
+            <Link to={`/match/${props.match.id}`} className="links">
                 <h4>{props.match.name}</h4>
             </Link>
             <h6>{dateBegin(props.match.begin_at)}</h6>
@@ -33,7 +33,7 @@ const ListOpponents = (props) =>
         {
             props.match.opponents.map((opponent, i)=>
                 <li key={i}>
-                    <Link to={`/teams/${opponent.opponent.id}`}>
+                    <Link  to={`/teams/${opponent.opponent.id}`} className="links">
                         {opponent.opponent.name} <br/>
                         <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
                     </Link>
@@ -96,14 +96,14 @@ const Tournaments = (props) => {
             (
                 <div>
                     <div>
-                        <div>
+                        <div className="home-box-1">
                             <h3>Current tournaments</h3>
                             <ul>
                                 {runningList}
                             </ul>
                         </div>
 
-                        <div>
+                        <div className="home-box-2">
                             <h3>Upcoming Matches</h3>
                             {/* <div>
                                 <ul>
@@ -114,19 +114,20 @@ const Tournaments = (props) => {
                                 {upcomingTeamsList}
                             </div>
                         </div>
-
-                        <h3>Past tournaments</h3>
-                        <ul>
-                            {pastList}
-                        </ul>
+                        <div className="home-box-3">       
+                            <h3>Past tournaments</h3>
+                            <ul>
+                                {pastList}
+                            </ul>
+                        </div>
                     </div>
-                    <div>
+                    <div className="home-box-4">
                         <h3>Team in current tournament</h3>
                         <ul>
                             {teamsList}
                         </ul>
                     </div>
-                    <div>
+                    <div className="home-box-5">
                         <h3>Past Matches</h3>
                         <ul>
                             {pastMatchesList}

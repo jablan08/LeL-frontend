@@ -5,32 +5,40 @@ import * as routes from "../../constants/routes"
 import "./NavBar.css"
 import styled from "styled-components";
 
-const Nav = styled(NavBar)`
+const Nav = styled(NavLink)`
     margin: 1rem;
+    font-size: 3rem;    
 
+    :hover {
+        color: #F5F5F5
+    }
+
+`
+const Title = styled.h1`
+    font-size: 4rem;
+    margin: 1.5rem;
 `
 
 const NavBar = ({currentUser, doLogout}) =>
     
     <div className="nav">
-        <h2 className="title">League of eSports Legends</h2>
-        <Nav>
-            <NavLink exact to={routes.ROOT} activeClassName="active">HOME</NavLink>
-            <NavLink to={routes.TEAMS} activeClassName="active">TEAMS</NavLink> 
-            {/* <NavLink to={routes.USERS} activeClassName="active">USERS</NavLink>  */}
-            <NavLink to={routes.STANDINGS} activeClassName="active">STANDINGS</NavLink> 
-            <NavLink to={routes.SCHEDULE} activeClassName="active">SCHEDULE</NavLink> 
+        <Title className="title">League of eSports Legends</Title>
+            <Nav exact to={routes.ROOT} activeClassName="active">HOME</Nav>
+            <Nav to={routes.TEAMS} activeClassName="active">TEAMS</Nav> 
+            {/* <Nav to={routes.USERS} activeClassName="active">USERS</Nav>  */}
+            <Nav to={routes.STANDINGS} activeClassName="active">STANDINGS</Nav> 
+            <Nav to={routes.SCHEDULE} activeClassName="active">SCHEDULE</Nav> 
             
             {
                 currentUser
-                ? <span>hello {currentUser.username} <NavLink to={`${routes.USERS}/${currentUser._id}`}> ACCOUNT </NavLink> <button onClick={doLogout}>LOGOUT</button></span>
-                : [<NavLink key={1} to={'/login'} activeClassName="active">LOGIN </NavLink>,
-                <NavLink key={2} to={routes.CREATEUSER} activeClassName="active">REGISTER </NavLink> ]
+                ? <span className="message"> <Nav to={`${routes.USERS}/${currentUser._id}`}> ACCOUNT </Nav> Hello {currentUser.username} <button onClick={doLogout} className="navButton" >LOGOUT</button></span>
+                : [<Nav key={1} to={'/login'} activeClassName="active">LOGIN </Nav>,
+                <Nav key={2} to={routes.CREATEUSER} activeClassName="active">REGISTER </Nav> ]
                 
                 
                 
             }
-        </Nav>
+    
     </div>
 
 

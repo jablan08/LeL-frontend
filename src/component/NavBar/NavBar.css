@@ -1,12 +1,16 @@
 .active {
-    color: red;
+    color:darksalmon;
 }
 
-.nav {
-    font-size: 3rem;
-
+.message {
+    font-size: 3rem; 
 }
 
-.title {
-    font-size: 4rem
+.navButton {
+    background: none;
+
+}
+.navButton:hover {
+    color: #F5F5F5
+    
 }

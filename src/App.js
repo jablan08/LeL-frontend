@@ -78,11 +78,10 @@ class App extends Component {
   
   render() { 
     const { currentUser, data, upcoming } = this.state
-    console.log(data,"FULLL ARRAY")
-    console.log(upcoming)
     return ( 
       <div >
       <NavBar doLogout={this.doLogout} currentUser={currentUser}/> 
+      
       <Switch>
         <Route exact path={routes.ROOT} render={()=><Tournaments data={data}/>}/>
 
