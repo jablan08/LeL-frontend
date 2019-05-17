@@ -7,6 +7,7 @@ import Tournaments from "./component/TourneyContainer/Tournaments"
 import AllTeam from "./component/AllTeams/AllTeam"
 import CreateUser from "./component/CreateUser/CreateUser"
 import TeamShow from "./component/TeamShow/TeamShow"
+import Match from "./component/MatchShow/MatchShow"
 
 import * as routes from "./constants/routes"
 
@@ -28,7 +29,14 @@ class App extends Component {
     })
   }
   
-  doLogout= () => {
+  doLogout= async () => {
+    const killSession = await fetch("/login/logout", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
     this.setState({
       currentUser: null
     })
@@ -80,9 +88,8 @@ class App extends Component {
 
         <Route exact path={routes.TOURNAMENTS} render={() => <div>TOURNAMENTS</div>} />
         <Route exact path={`${routes.TOURNAMENTS}/:id`} render={() => <div>TOURNAMENTS SHOW</div>} />
-
-        <Route exact path={routes.ALLMATCHES} render={()=><div>ALL MATCHES</div>}/>
-        <Route exact path={`${routes.MATCH}/:id`} render={()=><div>MATCH</div>}/>
+        
+        <Route exact path={`${routes.MATCH}/:id`} render={()=><Match data={data}/>}/>
 
         <Route exact path={routes.STANDINGS} render={() => <div>STANDINGS</div>} />
         <Route exact path={routes.CREATEUSER} render={() => <CreateUser currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />

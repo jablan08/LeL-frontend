@@ -27,7 +27,7 @@ class ShowUser extends Component {
             console.log(error)
         }
     }
-    deleteToWatchList = async (id, e) => {
+    deleteToWatchList = async (id,) => {
         console.log(id, ' this is id')
         try {
             const deleteWatchList = await fetch(`/users/watchlist/${id}`, {
@@ -40,7 +40,8 @@ class ShowUser extends Component {
             console.log(deletedWatchList, "sent back")
             this.setState({
                 user: {
-                    watchList: this.state.user.watchList.filter((team,i)=> team.id !== id )   
+                    username: deletedWatchList.foundUser.username,
+                    watchList: deletedWatchList.foundUser.watchList
                 }
             });
     

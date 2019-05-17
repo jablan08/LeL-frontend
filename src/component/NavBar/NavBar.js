@@ -13,7 +13,7 @@ const NavBar = ({currentUser, doLogout}) =>
         {/* <NavLink to={routes.USERS} activeClassName="active">USERS</NavLink>  */}
         <NavLink to={routes.STANDINGS} activeClassName="active">STANDINGS</NavLink> 
         <NavLink to={routes.SCHEDULE} activeClassName="active">SCHEDULE</NavLink> 
-        <NavLink to={routes.ALLMATCHES} activeClassName="active">ALL MATCHES</NavLink> 
+        
         {
             currentUser
             ? <span>hello {currentUser.username} <NavLink to={`${routes.USERS}/${currentUser._id}`}> ACCOUNT </NavLink> <button onClick={doLogout}>LOGOUT</button></span>

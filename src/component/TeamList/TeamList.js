@@ -6,9 +6,13 @@ const TeamList = (props) =>{
     
     const teamList = players.map((player,i)=>
         <li key={i}>
-            {player.name} 
-            <img src={player.image_url} width="125" height="100" alt=""/>
-            ROLE: {player.role.toUpperCase()}
+            {player.name}
+            {
+                player.image_url 
+                ? <img src={player.image_url} width="125" height="100" alt=""/>
+                : <h3>No image available</h3>
+            } 
+            ROLE: {player.role ? player.role.toUpperCase(): "Not specified"}
         </li>
     )
 
@@ -16,7 +20,7 @@ const TeamList = (props) =>{
         <div>
             {name}
             <img src={image_url} width="300" height="300" alt=""/>
-            <button type="submit" onClick={()=> props.addTeamToWatch(props.data.fullTeam)}>Add to WatchList</button>
+            
             <ul>
                 {teamList}
             </ul>
