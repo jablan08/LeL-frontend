@@ -11,11 +11,6 @@ const ListTournaments = (props) =>
             </Link>
         </li>
 
-const ListNames = (props) => 
-    <li>
-        {props.match.league.name} - {props.match.name.toUpperCase()}  <br/>
-    </li>
-
 const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
