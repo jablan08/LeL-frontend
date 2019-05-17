@@ -41,7 +41,7 @@ class TourneyShow extends Component {
                     ?  <div>
                             <h1>{tournamentData.league.name}</h1>
                             <h2>{tournamentData.name}</h2>
-                            <img src={tournamentData.league.image_url} height="200"/>
+                            <img src={tournamentData.league.image_url} height="200" alt=""/>
                             <div>
                                 {
                                     stats.map((team,i)=>
