@@ -48,14 +48,25 @@ class Login extends Component {
     render() { 
         const { username, password, logged, message } = this.state
         return ( 
-            logged 
-            ? <Redirect to={`/users/${this.props.currentUser._id}`}/>
-            : <form onSubmit={e => this.handleSubmit(e)}>
-                <input text="text" name="username" onChange={this.handleChange} value={username}/>
-                <input text="password" name="password" onChange={this.handleChange} value={password}/>
-                <button type="submit"> Submit</button>
-                {message}
-            </form>
+            <div>
+                <div>
+                    <h1>
+                        Sign in
+                    </h1>
+                </div>
+                {     
+                    logged 
+                    ? <Redirect to={`/users/${this.props.currentUser._id}`}/>
+                    : <form onSubmit={e => this.handleSubmit(e)}>
+                        <label htmlFor="username">Username</label>
+                        <input text="text" name="username" onChange={this.handleChange} value={username}/>
+                        <label htmlFor="password">Password</label>
+                        <input text="password" name="password" onChange={this.handleChange} value={password}/>
+                        <button type="submit"> Submit</button>
+                        {message}
+                    </form>
+                }
+            </div>
          );
     }
 }

@@ -54,7 +54,7 @@ class Match extends Component {
                     data.match
                     ? <div>
                         <h3>{data.match.league.name}</h3>
-                        <img width="250" height="250"src={data.match.league.image_url}/>
+                        <img width="250" height="250"src={data.match.league.image_url } alt=""/>
 
                         <div>
                             
@@ -76,12 +76,7 @@ class Match extends Component {
                         }
                         </div>
                     : <h2>Loading...</h2>
-                   
-
-
                 }
-
-
             </div>
                 
       

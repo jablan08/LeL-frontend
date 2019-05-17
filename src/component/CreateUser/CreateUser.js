@@ -46,6 +46,11 @@ class CreateUser extends Component {
         const { username, password, logged } = this.state
         return ( 
             <div>
+                <div>
+                    <h1>
+                        Register!
+                    </h1>
+                </div>
                 {
                     logged
                         ? <Redirect to={`/users/${this.props.currentUser._id}`}/>

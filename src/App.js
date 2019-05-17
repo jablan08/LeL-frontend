@@ -8,6 +8,8 @@ import AllTeam from "./component/AllTeams/AllTeam"
 import CreateUser from "./component/CreateUser/CreateUser"
 import TeamShow from "./component/TeamShow/TeamShow"
 import Match from "./component/MatchShow/MatchShow"
+import Schedule from "./component/Schedule/Schedule"
+import TourneyShow from "./component/TournamentsShow/TournamentsShow"
 
 import * as routes from "./constants/routes"
 
@@ -18,7 +20,8 @@ require("dotenv").config();
 class App extends Component {
   state = { 
     currentUser: null,
-    data: []
+    data: [],
+    upcoming:[]
     
    }
 
@@ -30,11 +33,11 @@ class App extends Component {
   }
   
   doLogout= async () => {
-    const killSession = await fetch("/login/logout", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+    await fetch("/login/logout", {
+    credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
       }
     })
     this.setState({
@@ -49,7 +52,8 @@ class App extends Component {
       {
         console.log(allData) 
         this.setState({
-          data: allData.data
+          data: allData.data,
+          upcoming: allData.data.dataUpcoming
         })
       }
     )  
@@ -73,8 +77,9 @@ class App extends Component {
   
   
   render() { 
-    const { currentUser, data } = this.state
+    const { currentUser, data, upcoming } = this.state
     console.log(data,"FULLL ARRAY")
+    console.log(upcoming)
     return ( 
       <div >
       <NavBar doLogout={this.doLogout} currentUser={currentUser}/> 
@@ -84,17 +89,15 @@ class App extends Component {
         <Route exact path={routes.TEAMS} render={()=> <AllTeam data={data}/> }/>
         <Route exact path={`${routes.TEAMS}/:id`} render={()=> <TeamShow data={data} currentUser={currentUser} setCurrentUser={this.setCurrentUser} />}/> 
 
-        <Route exact path={`${routes.PLAYER}/:id`} render={()=> <div> PLAYER SHOW </div>}/>
 
-        <Route exact path={routes.TOURNAMENTS} render={() => <div>TOURNAMENTS</div>} />
-        <Route exact path={`${routes.TOURNAMENTS}/:id`} render={() => <div>TOURNAMENTS SHOW</div>} />
+        <Route exact path={`${routes.TOURNAMENTS}/:id`} render={() => <TourneyShow dataTourney={data} />} />
         
         <Route exact path={`${routes.MATCH}/:id`} render={()=><Match data={data}/>}/>
 
         <Route exact path={routes.STANDINGS} render={() => <div>STANDINGS</div>} />
         <Route exact path={routes.CREATEUSER} render={() => <CreateUser currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />
 
-        <Route exact path={routes.SCHEDULE} render={() => <div>SCHEDULE</div>} />
+        <Route exact path={routes.SCHEDULE} render={() => <Schedule data={upcoming}/>} />
        
         <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
       

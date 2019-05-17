@@ -59,7 +59,7 @@ const Tournaments = (props) => {
     let teamsList;
     let pastMatchesList;
     if(props.data.dataRunning){
-        console.log(props.data.dataRunning[0].teams, "TEAMSRUNNING")
+    
         runningList = dataRunning.map((tourney, i) => 
             
             <ListTournaments tourney={tourney} key={i} />

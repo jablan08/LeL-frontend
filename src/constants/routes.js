@@ -1,6 +1,6 @@
 export const ROOT = "/"
 export const TEAMS = "/teams"
-export const PLAYER = "/player"
+
 export const STANDINGS = "/standings"
 export const SCHEDULE = "/schedule"
 export const USERS = "/users"

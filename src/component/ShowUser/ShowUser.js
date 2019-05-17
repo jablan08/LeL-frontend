@@ -28,16 +28,14 @@ class ShowUser extends Component {
         }
     }
     deleteToWatchList = async (id,) => {
-        console.log(id, ' this is id')
+       
         try {
             const deleteWatchList = await fetch(`/users/watchlist/${id}`, {
                 credentials: "include",
                 method: 'DELETE'
               
             });
-            console.log('inside herrrrrr')
             const deletedWatchList = await deleteWatchList.json();
-            console.log(deletedWatchList, "sent back")
             this.setState({
                 user: {
                     username: deletedWatchList.foundUser.username,
@@ -50,38 +48,10 @@ class ShowUser extends Component {
         }
     }
 
-    // addTeamToWatch = async (team) => {
-    //     // e.preventDefault();
-        
-    //     console.log(team)
-    //     try {
-    //         const addTeam = await fetch("/api/users/:id", {
-    //             method: "POST",
-    //             body: JSON.stringify(team),
-    //             credentials: "include",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             }
-    //         });
-    //         const parsedResponse = await addTeam.json();
-    //         this.setState({
-    //             user: [...this.state.user.watchList, parsedResponse.data]
-                
-    //         })
-
-
-    //     } catch(err) {
-
-    //     }
-
-    // }
-
 
 
 
     render() { 
-        console.log(this.state.user.watchList)
-        console.log(this.state.user, "hittttt")
         const { username, watchList} = this.state.user
         return ( 
              <div>
