@@ -28,8 +28,58 @@ body {
   
     
 }
+div {
+    margin: 1rem;
 
+}
 .links:hover {
     color: #F5F5F5;
     
+}
+ul {
+    display: flex;
+    justify-content: center;
+    margin: 4rem;
+
+}
+
+.list-container-1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.win-class {
+    display: block
+}
+
+.team-titles {
+    display: block;
+    font-size: 2rem;
+}
+
+.team-list-li {
+    margin: 0 2rem;
+}
+
+.team-list-1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+h6 {
+    font-size: 1.8rem;
+}
+li {
+    margin: 1rem;
 }

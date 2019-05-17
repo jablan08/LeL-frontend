@@ -25,11 +25,11 @@ class CreateUser extends Component {
                 }
             })
             const parsedResponse = await createUser.json();
-            console.log(parsedResponse)
+          
             if (parsedResponse.success) {
-                console.log(parsedResponse)
+              
                 this.props.setCurrentUser(parsedResponse.newUser)
-                console.log(this.props.setCurrentUser(parsedResponse.newUser))
+        
                 this.setState({
                     logged: true
                 })
@@ -42,7 +42,7 @@ class CreateUser extends Component {
 
     
     render() { 
-        console.log(this.state)
+        
         const { username, password, logged } = this.state
         return ( 
             <div>

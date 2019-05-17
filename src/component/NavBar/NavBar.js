@@ -25,8 +25,7 @@ const NavBar = ({currentUser, doLogout}) =>
         <Title className="title">League of eSports Legends</Title>
             <Nav exact to={routes.ROOT} activeClassName="active">HOME</Nav>
             <Nav to={routes.TEAMS} activeClassName="active">TEAMS</Nav> 
-            {/* <Nav to={routes.USERS} activeClassName="active">USERS</Nav>  */}
-            <Nav to={routes.STANDINGS} activeClassName="active">STANDINGS</Nav> 
+            
             <Nav to={routes.SCHEDULE} activeClassName="active">SCHEDULE</Nav> 
             
             {

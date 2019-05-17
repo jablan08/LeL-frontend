@@ -6,7 +6,7 @@ import { Link }from "react-router-dom"
 const ListTournaments = (props) => 
         <li>
             <Link to={`/tournaments/${props.tourney.id}`} className="links">
-                {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/>
+                <span className="team-titles"> {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/> </span>
                 <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
             </Link>
         </li>
@@ -15,7 +15,7 @@ const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
                 <Link to={`/teams/${team.id}`} className="links">
-                    {team.name} <br/>
+                    <span className="team-titles"> {team.name} <br/> </span>
                     <img src={team.image_url} width="150" height="150"alt=""/>
                 </Link>
             </li>
@@ -34,7 +34,7 @@ const ListOpponents = (props) =>
             props.match.opponents.map((opponent, i)=>
                 <li key={i}>
                     <Link  to={`/teams/${opponent.opponent.id}`} className="links">
-                        {opponent.opponent.name} <br/>
+                        <span className="team-titles"> {opponent.opponent.name} <br/> </span>
                         <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
                     </Link>
                     <h6>WINS:{props.match.results[i].score}</h6>
@@ -53,7 +53,6 @@ const timeBegin = str =>
 const Tournaments = (props) => {
     const {dataRunning, dataPast, dataUpcoming, dataPastMatches} = props.data
     let runningList;
-    // let upcomingList;
     let upcomingTeamsList;
     let pastList;
     let teamsList;
@@ -64,10 +63,6 @@ const Tournaments = (props) => {
             
             <ListTournaments tourney={tourney} key={i} />
         )
-
-        // upcomingList = dataUpcoming.map((match, i) => 
-        //     <ListNames match={match} key={i} />
-        // )
 
         upcomingTeamsList = dataUpcoming.map((match, i) => 
             <ListOpponents match={match} key={i}/>
@@ -105,33 +100,37 @@ const Tournaments = (props) => {
 
                         <div className="home-box-2">
                             <h3>Upcoming Matches</h3>
-                            {/* <div>
-                                <ul>
-                                    {upcomingList}
-                                </ul>
-                            </div> */}
-                            <div>
+                            
+                            <div className="list-container-1">
                                 {upcomingTeamsList}
                             </div>
                         </div>
                         <div className="home-box-3">       
                             <h3>Past tournaments</h3>
-                            <ul>
-                                {pastList}
-                            </ul>
+                            <div className="list-container-2">
+                                <ul>
+                                    {pastList}
+                                </ul>
+
+                            </div>
                         </div>
                     </div>
                     <div className="home-box-4">
                         <h3>Team in current tournament</h3>
-                        <ul>
-                            {teamsList}
-                        </ul>
+                        <div className="list-container-3">
+
+                            <ul>
+                                {teamsList}
+                            </ul>
+                        </div>
                     </div>
                     <div className="home-box-5">
                         <h3>Past Matches</h3>
-                        <ul>
-                            {pastMatchesList}
-                        </ul>
+                        <div className="list-container-4">
+                            <ul>
+                                {pastMatchesList}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             )

@@ -45,7 +45,6 @@ class Match extends Component {
     render() { 
 
         const {data} = this.state
-        console.log(data.match)
         return ( 
             <div>
 
@@ -66,7 +65,7 @@ class Match extends Component {
                         {
                             data.match.opponents.map((opponent, i)=>
                                 <li key={i}>
-                                    <Link to={`/teams/${opponent.opponent.id}`}>
+                                    <Link to={`/teams/${opponent.opponent.id}`} className="links">
                                         {opponent.opponent.name} <br/>
                                         <img src={opponent.opponent.image_url} width="150" height="150"alt=""/>
                                     </Link>

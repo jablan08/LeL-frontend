@@ -2,11 +2,11 @@ import React from 'react';
 import { Link }from "react-router-dom"
 
 const WatchList = (props)=> {
-    console.log(props)
+   
     const watchList = props.watchList.map((team,i)=>{
         return (
             <li key={i}>
-            <Link to={`/teams/${team.id}`}>
+            <Link to={`/teams/${team.id}`} className="links">
                 <span>{team.title}</span><br/>
                 <img src={team.image} width="150" height="150" alt=""/><br/>
             </Link>

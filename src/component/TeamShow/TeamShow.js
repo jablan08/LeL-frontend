@@ -22,7 +22,7 @@ class TeamShow extends Component {
     getTeam = async (ids) =>{
         try {
             const teamShow = await fetch(`/api/teams/${ids}`, {
-                // body: JSON.stringify(this.state.data[0].id),
+
                 credentials: "include"
             })
             const teamShowJson = await teamShow.json()
@@ -35,9 +35,9 @@ class TeamShow extends Component {
     }
 
     addTeamToWatch = async (team) => {
-        console.log(team)
+       
         try {
-            // if (this.props.currentUser){
+           
                 const addTeam = await fetch("/users/add", {
                     method: "POST",
                     body: JSON.stringify(team),
@@ -47,33 +47,27 @@ class TeamShow extends Component {
                     }
                 });
                 const parsedResponse = await addTeam.json();
-                console.log(parsedResponse)
+              
                 if (parsedResponse.success) {
-                    console.log(parsedResponse, "=======++++")
+                    
                     this.props.setCurrentUser(parsedResponse.updatedUser)
                     this.setState({
                         addMessage: "Added to watch list!"
                     })
 
                 }
-            // else {
-            //     this.setState({
-            //         message: "Please log in or register to add to watch list."
-            //     })
-
-            // }
             
-        } catch(err) {
+            } catch(err) {
             console.log(err)
         }
 
     }
     render() { 
        const {data, message, addMessage} = this.state
-       console.log(data)
+      
         return ( 
             <div>
-                <div>
+                <div className="team-show-1">
                     <h1>{data.name}</h1>
                     {
                         this.props.currentUser

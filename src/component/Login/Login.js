@@ -26,11 +26,11 @@ class Login extends Component {
                     "Content-Type": "application/json"
                 }
             })
-            console.log("HIT")
+            
             const parsedResponse = await login.json();
-            console.log(parsedResponse)
+         
             if (parsedResponse.success) {
-                console.log(parsedResponse)
+                
                 this.props.setCurrentUser(parsedResponse.user)
                 this.setState({
                     logged: true,

@@ -41,13 +41,13 @@ class Schedule extends Component {
     render() { 
         const { data } = this.state
         return ( 
-            <div>
+            <div className="list-container-1">
                 {
                     data.schedules
                     ? data.schedules.map((match,i)=>
                         <div key={i}>
                             <div>
-                                <Link to={`/match/${match.id}`}>
+                                <Link to={`/match/${match.id}`} className="links">
                                     <h4>{match.name}</h4>
                                 </Link>
                                 <h6>{this.dateBegin(match.begin_at)}</h6>
@@ -57,7 +57,7 @@ class Schedule extends Component {
                                 match.opponents.map((opponent, i)=>
                                     <div key={i}>
                                         <li>
-                                            <Link to={`/teams/${opponent.opponent.id}`}>
+                                            <Link to={`/teams/${opponent.opponent.id}`} className="links">
                                                 {opponent.opponent.name} <br/>
                                                 <img src={opponent.opponent.image_url} width="100" height="100"alt=""/>
                                             </Link>

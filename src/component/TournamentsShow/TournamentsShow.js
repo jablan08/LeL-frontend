@@ -33,27 +33,27 @@ class TourneyShow extends Component {
       }
     render() {
         const { stats, tournamentData } = this.state
-        console.log(stats, tournamentData)
+       
         return ( 
             <div>
                 {
                     tournamentData.name
                     ?  <div>
-                            <h1>{tournamentData.league.name}</h1>
-                            <h2>{tournamentData.name}</h2>
+                            <h3>{tournamentData.league.name}</h3>
+                            <h4>{tournamentData.name}</h4>
                             <img src={tournamentData.league.image_url} height="200" alt=""/>
-                            <div>
+                            <div className="list-container-1">
                                 {
                                     stats.map((team,i)=>
                                         <li key={i}>
                                             <h6>RANK: {team.rank}</h6>
-                                            <Link to={`/teams/${team.team.id}`}>
-                                                {team.team.name} <br/>
+                                            <Link to={`/teams/${team.team.id}`} className="links">
+                                                <span className="team titles" > {team.team.name} <br/> </span>
                                                 <img src={team.team.image_url} height="100"alt=""/>
                                             </Link>
                                             {
-                                                team.wins
-                                                && <span>Wins: {team.wins} Losses: {team.losses}</span>
+                                                <span className="team titles" > team.wins </span>
+                                                && <span className="win-class team-titles">Wins: {team.wins} Losses: {team.losses}</span>
 
                                             }
                                         </li>

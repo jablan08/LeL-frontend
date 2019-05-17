@@ -50,7 +50,7 @@ class App extends Component {
   componentDidMount() {
     this.getTournaments().then(allData =>
       {
-        console.log(allData) 
+        
         this.setState({
           data: allData.data,
           upcoming: allData.data.dataUpcoming
@@ -93,7 +93,7 @@ class App extends Component {
         
         <Route exact path={`${routes.MATCH}/:id`} render={()=><Match data={data}/>}/>
 
-        <Route exact path={routes.STANDINGS} render={() => <div>STANDINGS</div>} />
+        
         <Route exact path={routes.CREATEUSER} render={() => <CreateUser currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />
 
         <Route exact path={routes.SCHEDULE} render={() => <Schedule data={upcoming}/>} />
