@@ -38,12 +38,11 @@ class Match extends Component {
     moment(new Date(str).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A");
 
     render() { 
-        console.log("refreshed worked!!!! sasdada")
+       
         const {data} = this.state
         return ( 
             <div>
 
-                
                 {
                     data.match
                     ? <div>

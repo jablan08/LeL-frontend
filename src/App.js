@@ -77,17 +77,18 @@ class App extends Component {
   
   
   render() { 
+    
     const { currentUser, data, upcoming } = this.state
     return ( 
       <div >
         <NavBar doLogout={this.doLogout} currentUser={currentUser}/> 
-        
+       
         <Switch>
           <Route exact path={routes.ROOT} render={()=> <Tournaments data={data}/> }/>
           <Route exact path={routes.TEAMS} render={()=> <AllTeam data={data}/> }/>
           <Route exact path={`${routes.TEAMS}/:id`} render={()=> <TeamShow data={data} currentUser={currentUser} setCurrentUser={this.setCurrentUser} />}/> 
           <Route exact path={`${routes.TOURNAMENTS}/:id`} render={() => <TourneyShow dataTourney={data} />} />
-          <Route exact path={`${routes.MATCH}/:id`} render={()=> <Match data={data}/>}/>
+          <Route exact path={`${routes.MATCH}/:id`} render={()=> <Match />}/>
           <Route exact path={routes.CREATEUSER} render={() => <CreateUser currentUser={currentUser} setCurrentUser={this.setCurrentUser}/>} />
           <Route exact path={routes.SCHEDULE} render={() => <Schedule data={upcoming}/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
