@@ -38,7 +38,7 @@ class Match extends Component {
     moment(new Date(str).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A");
 
     render() { 
-
+        console.log("refreshed worked!!!! sasdada")
         const {data} = this.state
         return ( 
             <div>
@@ -64,7 +64,7 @@ class Match extends Component {
                                         {opponent.opponent.name} <br/>
                                         <img src={opponent.opponent.image_url} width="150" height="150"alt=""/>
                                     </Link>
-                                    <h6>WINS:{data.match.results[i].score}</h6>
+                                    <h6>WINS:{data.match.results[i].id === opponent.opponent.id && data.match.results[i].score}</h6>
                                 </li>
                             )
                         }
