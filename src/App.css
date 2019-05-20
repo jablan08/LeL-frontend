@@ -11,19 +11,12 @@
 
 html {
     font-size: 62.5%;
-    
-
-
-}
-img {
-
 }
 
 body {
     box-sizing: border-box;
     text-align: center;
-
-    background-color: #8e9eab/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #8e9eab
 
   
     
@@ -40,6 +33,7 @@ ul {
     display: flex;
     justify-content: center;
     margin: 4rem;
+    flex-wrap: wrap
 
 }
 
@@ -66,7 +60,7 @@ ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10rem;
+    margin: 10rem 5rem;
 }
 
 h3 {

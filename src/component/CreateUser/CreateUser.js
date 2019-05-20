@@ -25,21 +25,17 @@ class CreateUser extends Component {
                 }
             })
             const parsedResponse = await createUser.json();
-          
-            if (parsedResponse.success) {
-              
-                this.props.setCurrentUser(parsedResponse.newUser)
-        
-                this.setState({
-                    logged: true
-                })
-            }
+                if (parsedResponse.success) {
+                    this.props.setCurrentUser(parsedResponse.newUser)
+            
+                    this.setState({
+                        logged: true
+                    })
+                }
         } catch (error) {
             console.log(error)
         }
-      
     }
-
     
     render() { 
         
@@ -53,26 +49,25 @@ class CreateUser extends Component {
                 </div>
                 {
                     logged
-                        ? <Redirect to={`/users/${this.props.currentUser._id}`}/>
-                        : <RegisterForm
-                            handleChange = {this.handleChange}
-                            handleSubmit = {this.handleSubmit}
-                            username = {username}
-                            password = {password}
-                        />
+                    ? <Redirect to={`/users/${this.props.currentUser._id}`}/>
+                    : <RegisterForm
+                        handleChange = {this.handleChange}
+                        handleSubmit = {this.handleSubmit}
+                        username = {username}
+                        password = {password}
+                    />
                 }
             </div>
-            
          );
     }
 }
  const RegisterForm = ({handleChange, handleSubmit, username, password}) =>
     <form onSubmit={e => handleSubmit(e)}>
-    <label htmlFor="username">Username</label>
-    <input type="text" name="username" onChange={handleChange} value={username}/>
-    <label htmlFor="password">Password</label>
-    <input type="password" name="password" onChange={handleChange}value={password}/>
-    <button type="submit">SUBMIT </button>
+        <label htmlFor="username">Username</label>
+        <input type="text" name="username" onChange={handleChange} value={username}/>
+        <label htmlFor="password">Password</label>
+        <input type="password" name="password" onChange={handleChange}value={password}/>
+        <button type="submit">SUBMIT </button>
     </form>
 
 export default CreateUser;

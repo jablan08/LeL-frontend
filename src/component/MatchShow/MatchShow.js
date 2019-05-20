@@ -8,7 +8,6 @@ class Match extends Component {
         matchId: window.location.pathname.split("/")[2],
     }
 
-
     componentDidMount() {
         this.getMatch(this.state.matchId).then(allData => {
             this.setState({
@@ -37,10 +36,6 @@ class Match extends Component {
 
     timeBegin = str => 
     moment(new Date(str).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A");
-
-
-
-
 
     render() { 
 
@@ -77,9 +72,6 @@ class Match extends Component {
                     : <h2>Loading...</h2>
                 }
             </div>
-                
-      
-            
          );
     }
 }

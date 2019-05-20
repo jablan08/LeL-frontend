@@ -31,6 +31,6 @@ const TeamList = (props) =>{
                 {teamList}
             </ul>
         </div>
-    )
-    }
-    export default TeamList
+        )
+}
+export default TeamList

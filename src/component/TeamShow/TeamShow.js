@@ -73,18 +73,12 @@ class TeamShow extends Component {
                         this.props.currentUser
                         && [<button key={1}type="submit" onClick={()=> this.addTeamToWatch(data.fullTeam)}>Add to WatchList</button>,
                         <span key={2}>{addMessage} </span>]
-                        
-                    }
-                    {
-                        
                     }
                 </div>
                 {
                     data.length === 0
                     ? <h1>Loading...</h1>
                     : [<h3 key={1}>{message}</h3>, <TeamList key={2} addTeamToWatch={this.addTeamToWatch} data={data}/>]
-
-                    
                 }
                 
             </div>

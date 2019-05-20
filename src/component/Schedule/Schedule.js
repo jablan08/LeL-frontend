@@ -26,17 +26,11 @@ class Schedule extends Component {
             console.log(error)
         }
     }
-
-
-
-
     dateBegin = str =>
         new Date(str).toDateString();
 
     timeBegin = str => 
         moment(new Date(str).toTimeString().split("G")[0],"hh,mm,ss").format("h:mm A");
-
-
 
     render() { 
         const { data } = this.state
@@ -70,7 +64,6 @@ class Schedule extends Component {
                     )
                     : <h2>Loading...</h2>
                 }
-
             </div>
          );
     }

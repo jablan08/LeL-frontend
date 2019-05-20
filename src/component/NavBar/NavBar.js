@@ -25,20 +25,12 @@ const NavBar = ({currentUser, doLogout}) =>
         <Title className="title">League of eSports Legends</Title>
             <Nav exact to={routes.ROOT} activeClassName="active">HOME</Nav>
             <Nav to={routes.TEAMS} activeClassName="active">TEAMS</Nav> 
-            
             <Nav to={routes.SCHEDULE} activeClassName="active">SCHEDULE</Nav> 
-            
             {
                 currentUser
                 ? <span className="message"> <Nav to={`${routes.USERS}/${currentUser._id}`}> ACCOUNT </Nav> Hello {currentUser.username} <button onClick={doLogout} className="navButton" >LOGOUT</button></span>
                 : [<Nav key={1} to={'/login'} activeClassName="active">LOGIN </Nav>,
-                <Nav key={2} to={routes.CREATEUSER} activeClassName="active">REGISTER </Nav> ]
-                
-                
-                
+                <Nav key={2} to={routes.CREATEUSER} activeClassName="active">REGISTER </Nav> ]   
             }
-    
     </div>
-
-
 export default NavBar;

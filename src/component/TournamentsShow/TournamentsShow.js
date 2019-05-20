@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
+import styled from "styled-components";
+
+const Linked = styled(Link)`    
+    :hover {
+        color: #F5F5F5
+    }
+`
 
 class TourneyShow extends Component {
     state = { 
@@ -45,16 +52,15 @@ class TourneyShow extends Component {
                             <div className="list-container-1">
                                 {
                                     stats.map((team,i)=>
-                                        <li key={i}>
+                                        <li key={i} className="links">
                                             <h6>RANK: {team.rank}</h6>
-                                            <Link to={`/teams/${team.team.id}`} className="links">
+                                            <Linked to={`/teams/${team.team.id}`}>
                                                 <span className="team titles" > {team.team.name} <br/> </span>
                                                 <img src={team.team.image_url} height="100"alt=""/>
-                                            </Link>
+                                            </Linked>
                                             {
-                                                <span className="team titles" > team.wins </span>
+                                                team.wins
                                                 && <span className="win-class team-titles">Wins: {team.wins} Losses: {team.losses}</span>
-
                                             }
                                         </li>
                                     

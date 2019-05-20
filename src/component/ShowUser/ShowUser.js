@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
 import WatchList from "../WatchList/WatchList"
 
-
 class ShowUser extends Component {
 
     state = { 
@@ -47,10 +46,6 @@ class ShowUser extends Component {
           console.log(err, ' error')
         }
     }
-
-
-
-
     render() { 
         const { username, watchList} = this.state.user
         return ( 

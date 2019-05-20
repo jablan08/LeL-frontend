@@ -1,42 +1,50 @@
 import React from 'react';
 import moment from "moment";
-import { Link }from "react-router-dom"
+import { Link } from "react-router-dom"
+import styled from "styled-components";
 
+const Linked = styled(Link)`    
+    color: red;
+
+    :hover {
+        color: #F5F5F5
+    }
+`
 
 const ListTournaments = (props) => 
         <li>
-            <Link to={`/tournaments/${props.tourney.id}`} className="links">
+            <Linked to={`/tournaments/${props.tourney.id}`}>
                 <span className="team-titles"> {props.tourney.league.name} - {props.tourney.name.toUpperCase()}  <br/> </span>
                 <img src={props.tourney.league.image_url} width="150" height="150"alt=""/>
-            </Link>
+            </Linked>
         </li>
 
 const ListTeams = (props) =>
         props.tourney.teams.map((team,i)=>
             <li key={i}>
-                <Link to={`/teams/${team.id}`} className="links">
+                <Linked to={`/teams/${team.id}`}>
                     <span className="team-titles"> {team.name} <br/> </span>
                     <img src={team.image_url} width="150" height="150"alt=""/>
-                </Link>
+                </Linked>
             </li>
         )
 
 const ListOpponents = (props) => 
     <div >
         <div>
-            <Link to={`/match/${props.match.id}`} className="links">
+            <Linked to={`/match/${props.match.id}`}>
                 <h4>{props.match.name}</h4>
-            </Link>
+            </Linked>
             <h6>{dateBegin(props.match.begin_at)}</h6>
             <h6>{timeBegin(props.match.begin_at)}</h6>
         </div>
         {
             props.match.opponents.map((opponent, i)=>
                 <li key={i}>
-                    <Link  to={`/teams/${opponent.opponent.id}`} className="links">
+                    <Linked  to={`/teams/${opponent.opponent.id}`}>
                         <span className="team-titles"> {opponent.opponent.name} <br/> </span>
                         <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
-                    </Link>
+                    </Linked>
                     <h6>WINS:{props.match.results[i].score}</h6>
                 </li>
             )
@@ -60,7 +68,6 @@ const Tournaments = (props) => {
     if(props.data.dataRunning){
     
         runningList = dataRunning.map((tourney, i) => 
-            
             <ListTournaments tourney={tourney} key={i} />
         )
 
@@ -76,11 +83,8 @@ const Tournaments = (props) => {
             <ListTeams tourney={tourney} key={i} />
         )
 
-        pastMatchesList = dataPastMatches.map((match,i)=>{ 
-            return(
-                <ListOpponents match={match} key={i}/>
-                )
-            }
+        pastMatchesList = dataPastMatches.map((match,i)=>
+                <ListOpponents match={match} key={i}/>  
         )
     }
     return (
