@@ -22,12 +22,11 @@
     "styled-components": "^4.2.0"
   },
   "scripts": {
-    "start": "node ./bin/www", 
+    "start": "node ./bin/www",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build",
-    "server": "node ./bin/www --ignore client"
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://127.0.0.1:8888"
+  "proxy": "http://localhost:8888"
 }
