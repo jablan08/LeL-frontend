@@ -1,4 +1,6 @@
 # League of eSports Legends
+![alt text](https://raw.githubusercontent.com/jablan08/LeL-frontend/master/public/imgs/LeL_Home.png)
+
 
 
 ## League of Legends tournament and match schedule information!
@@ -8,7 +10,7 @@ All data is provided by [Pandascore API](https://pandascore.co/welcome)
 
 ## Planning & Wireframes
 
-### The follwing [user stories](https://raw.githubusercontent.com/jablan08/LingoConnect_frontend/josh/src/components/resources/LC_user_stories.png) were considered when developing LingoConnect.
+### The follwing [user stories](https://raw.githubusercontent.com/jablan08/LeL-frontend/master/public/imgs/LeL_US.png) were considered when developing LingoConnect.
 
 
 ### Wireframes
