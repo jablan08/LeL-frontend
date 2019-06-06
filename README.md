@@ -1,11 +1,11 @@
-# Welcome, Bienvenue, 欢迎, ကြိုဆိုပါတယ်, to LingoConnect
+# League of eSports Legends
 ![alt text](https://raw.githubusercontent.com/jablan08/LingoConnect_frontend/josh/src/components/resources/LingoConnectGIF.gif)
 
 
 
-## LingoConnect
-LingoConnect is your go to translator with over 100 languages. Save the phrases on the go in your own account.
-The translations are powered by [Yandex.Translate](http://translate.yandex.com/)
+## League of Legends tournament and match schedule information!
+Stay up to date with all of your League of Legends information including tournament results, match schedules, and teams playing in the current tournament stages!
+All data is provided by [Pandascore API](https://pandascore.co/welcome)
 
 
 ## Planning & Wireframes
@@ -14,17 +14,18 @@ The translations are powered by [Yandex.Translate](http://translate.yandex.com/)
 
 
 ### Wireframes
-View our [wireframes](https://sketch.cloud/s/7AboP) here!
-The goal was a simple design with an emphasis on functionality. The user should come to the page just with the intention of translating a word or phrase. 
+Sketch was used to plan the beginning of the homepage. View the [wireframes](https://sketch.cloud/s/Gz4eO?settings=Gz4eO) here!
+
 
 
 ## Future development
-* A feature to be added is speak-to-text capability
+* Add the ability to watch live shows by connecting either the Twitch API or the Youtube API.
+* Add the ability to add upcoming matches to your watch list.
 
 
 ## Unsolved problems
 
-* Refresh on user account page does not allow user to edit account. User has to return back to home page and then return back to account page to edit account information.
+* The scaling and some of the style-components are not functioning properly.
 
 
 ## Technologies used:
