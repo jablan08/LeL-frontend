@@ -1,6 +1,4 @@
 # League of eSports Legends
-![alt text](https://raw.githubusercontent.com/jablan08/LingoConnect_frontend/josh/src/components/resources/LingoConnectGIF.gif)
-
 
 
 ## League of Legends tournament and match schedule information!

@@ -101,7 +101,6 @@ class App extends Component {
       <div >
         <GlobalStyle/>
         <NavBar doLogout={this.doLogout} currentUser={currentUser}/> 
-       <h1>WORKOsdRK</h1>
         <Switch>
           <Route exact path={routes.ROOT} render={()=> <Tournaments data={data}/> }/>
           <Route exact path={routes.TEAMS} render={()=> <AllTeam data={data}/> }/>
