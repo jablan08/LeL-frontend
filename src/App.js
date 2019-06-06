@@ -10,12 +10,30 @@ import TeamShow from "./component/TeamShow/TeamShow"
 import Match from "./component/MatchShow/MatchShow"
 import Schedule from "./component/Schedule/Schedule"
 import TourneyShow from "./component/TournamentsShow/TournamentsShow"
+import { createGlobalStyle } from "styled-components"
 
 import * as routes from "./constants/routes"
 
 import './App.css';
 
-require("dotenv").config();
+const GlobalStyle = createGlobalStyle`
+
+  body {
+    background-repeat: no-repeat;
+    background: linear-gradient(to top, #1f1c2c, #928dab) fixed; 
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    text-align: center;
+  
+  }
+  html {
+    font-size: 62.5%;
+  }
+  body, html {
+    height: 100%;
+  }
+`
 
 class App extends Component {
   state = { 
@@ -81,8 +99,9 @@ class App extends Component {
     const { currentUser, data, upcoming } = this.state
     return ( 
       <div >
+        <GlobalStyle/>
         <NavBar doLogout={this.doLogout} currentUser={currentUser}/> 
-       
+       <h1>WORKOsdRK</h1>
         <Switch>
           <Route exact path={routes.ROOT} render={()=> <Tournaments data={data}/> }/>
           <Route exact path={routes.TEAMS} render={()=> <AllTeam data={data}/> }/>

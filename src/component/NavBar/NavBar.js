@@ -7,7 +7,8 @@ import styled from "styled-components";
 
 const Nav = styled(NavLink)`
     margin: 1rem;
-    font-size: 3rem;    
+    font-size: 3rem;
+    color: rgb(212,175,55);    
 
     :hover {
         color: #F5F5F5

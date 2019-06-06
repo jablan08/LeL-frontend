@@ -26,9 +26,7 @@ class Login extends Component {
                     "Content-Type": "application/json"
                 }
             })
-            
             const parsedResponse = await login.json();
-         
             if (parsedResponse.success) {
                 
                 this.props.setCurrentUser(parsedResponse.user)

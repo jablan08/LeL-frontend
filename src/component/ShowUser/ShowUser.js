@@ -26,7 +26,7 @@ class ShowUser extends Component {
             console.log(error)
         }
     }
-    deleteToWatchList = async (id,) => {
+    deleteToWatchList = async (id) => {
        
         try {
             const deleteWatchList = await fetch(`/users/watchlist/${id}`, {

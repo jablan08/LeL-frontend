@@ -40,6 +40,7 @@ class Match extends Component {
     render() { 
        
         const {data} = this.state
+        console.log(data,"lskflkasjlkasjflkaj")
         return ( 
             <div>
 
@@ -59,11 +60,20 @@ class Match extends Component {
                         {
                             data.match.opponents.map((opponent, i)=>
                                 <li key={i}>
+                                    {console.log(data.match.results[i].team_id === opponent.opponent.id) }
                                     <Link to={`/teams/${opponent.opponent.id}`} className="links">
                                         {opponent.opponent.name} <br/>
                                         <img src={opponent.opponent.image_url} width="150" height="150"alt=""/>
                                     </Link>
-                                    <h6>WINS:{data.match.results[i].id === opponent.opponent.id && data.match.results[i].score}</h6>
+                                    <h6>
+                                        WINS:
+                                            { 
+                                                data.match.results[0].team_id === opponent.opponent.id 
+                                                ? data.match.results[0].score
+                                                : data.match.results[1].team_id === opponent.opponent.id 
+                                                    && data.match.results[1].score
+                                            }
+                                    </h6>
                                 </li>
                             )
                         }

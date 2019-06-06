@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import styled from "styled-components";
 
 const Linked = styled(Link)`    
-    color: red;
+    color: rgb(212,175,55);
 
     :hover {
         color: #F5F5F5
@@ -45,7 +45,18 @@ const ListOpponents = (props) =>
                         <span className="team-titles"> {opponent.opponent.name} <br/> </span>
                         <img src={opponent.opponent.image_url} width="50" height="50"alt=""/>
                     </Linked>
-                    <h6>WINS:{props.match.results[i].score}</h6>
+                    {
+                    
+
+                    }
+                    <h6>WINS:
+                        {
+                            props.match.results[0].team_id === opponent.opponent.id 
+                            ? props.match.results[0].score
+                            : props.match.results[1].team_id === opponent.opponent.id 
+                                && props.match.results[1].score
+                        }
+                    </h6>
                 </li>
             )
         }
@@ -97,9 +108,13 @@ const Tournaments = (props) => {
                     <div>
                         <div className="home-box-1">
                             <h3>Current tournaments</h3>
-                            <ul>
-                                {runningList}
-                            </ul>
+                            {
+                                dataRunning.length 
+                                ?   <ul>
+                                        {runningList}
+                                    </ul> 
+                                : <h2>No tournament stages currently running </h2>
+                            }
                         </div>
 
                         <div className="home-box-2">
@@ -122,10 +137,16 @@ const Tournaments = (props) => {
                     <div className="home-box-4">
                         <h3>Team in current tournament</h3>
                         <div className="list-container-3">
-
-                            <ul>
-                                {teamsList}
-                            </ul>
+                            {
+                                dataRunning.length 
+                                ?   <ul>
+                                        {teamsList}
+                                    </ul> 
+                                :    <h2> 
+                                        No tournament stages currently running 
+                                    </h2>
+                            }
+                            
                         </div>
                     </div>
                     <div className="home-box-5">

@@ -3,9 +3,9 @@ const express      = require('express');
 const cookieParser = require('cookie-parser');
 const logger       = require('morgan');
 const cors         = require("cors");
-const session      = require("express-session")
-const moment       = require("moment")
-const path         = require('path')
+const session      = require("express-session");
+const moment       = require("moment");
+const path         = require('path');
 const PORT         = 8888;
 
 
@@ -52,9 +52,9 @@ app.use('/api', apiRouter);
 app.use('/users', usersRouter);
 app.use("/login", authRouter)
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'))
+// })
 
 
 app.use((req, res, next)=>{

@@ -40,7 +40,7 @@ class TourneyShow extends Component {
       }
     render() {
         const { stats, tournamentData } = this.state
-       
+      
         return ( 
             <div>
                 {

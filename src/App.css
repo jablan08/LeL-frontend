@@ -1,26 +1,15 @@
 *,
 *::after,
 *::before   {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    list-style: none;
-    text-decoration: none;
-    color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  list-style: none;
+  text-decoration: none;
+  color: rgb(245,245,245);
 }
 
-html {
-    font-size: 62.5%;
-}
 
-body {
-    box-sizing: border-box;
-    text-align: center;
-    background-color: #8e9eab
-
-  
-    
-}
 div {
     margin: 1rem;
 
